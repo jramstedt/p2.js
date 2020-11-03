@@ -11165,7 +11165,7 @@ function GSSolver(options){
      * @type {Number}
      * @default 0
      */
-    this.frictionIterations = options.frictionIterations !== undefined ? 0 : options.frictionIterations;
+    this.frictionIterations = options.frictionIterations !== undefined ? options.frictionIterations : 0;
 
     /**
      * The number of iterations that were made during the last solve. If .tolerance is zero, this value will always be equal to .iterations, but if .tolerance is larger than zero, and the solver can quit early, then this number will be somewhere between 1 and .iterations.
@@ -13209,7 +13209,7 @@ World.prototype.removeBody = function(body){
     var constraints = this.constraints;
     var l = constraints.length;
     while (l--) {
-        if(constraints[l].bodyA === this || constraints[l].bodyB === this){
+        if(constraints[l].bodyA === body || constraints[l].bodyB === body){
             throw new Error('Cannot remove Body from World: it still has constraints connected to it.');
         }
     }
